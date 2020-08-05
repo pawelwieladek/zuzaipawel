@@ -1,12 +1,8 @@
 import Head from 'next/head'
-import Link from 'next/link'
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import { Button } from '@material-ui/core';
 
-import Intro from './intro';
-import About from './about';
+import Intro from 'components/sections/intro';
+import About from 'components/sections/about';
+import Details from 'components/sections/details';
 
 export default function Home() {
   return (
@@ -18,10 +14,7 @@ export default function Home() {
       </Head>
       <Intro />
       <About />
-
-      <style jsx>{`
-      
-      `}</style>
+      <Details />
 
       <style jsx global>{`
         @font-face{
@@ -38,33 +31,10 @@ export default function Home() {
         body {
           padding: 0;
           margin: 0;
-          font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
         }
 
         * {
           box-sizing: border-box;
-        }
-
-        .text-color-ocean {
-          color: #007f7b;
-        }
-
-        .text-color-sand {
-          color: #e5ccaf;
-        }
-
-        .text-color-white {
-          color: #fff;
-        }
-
-        .text-color-red {
-          color: #ef3340;
-        }
-
-        .text-color-black {
-          color: #000;
         }
       `}</style>
     </main>
