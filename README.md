@@ -1,2 +1,1 @@
-# zuzaipawel
-Zuza i Paweł
+# Wedding website of Zuza & Pawel
