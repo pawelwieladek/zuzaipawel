@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import Intro from 'components/sections/intro';
+import Wedding from 'components/sections/wedding';
 import About from 'components/sections/about';
 import Details from 'components/sections/details';
 
@@ -10,11 +11,12 @@ export default function Home() {
       <Head>
         <title>Zuzanna i Paweł biorą ślub!</title>
         <link rel="icon" href="/favicon.ico" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet"/>
       </Head>
       <Intro />
       <About />
       <Details />
+      <Wedding />
 
       <style jsx global>{`
         @font-face{

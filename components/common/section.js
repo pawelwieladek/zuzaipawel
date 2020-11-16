@@ -46,6 +46,7 @@ export default function Section({ heading, subheading, color, children }) {
 
             .heading {
                 text-align: center;
+                margin-bottom: 20px;
             }
             `}</style>
 

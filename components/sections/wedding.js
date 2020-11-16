@@ -8,22 +8,29 @@ import Heading from 'components/common/heading';
 import Paragraph from 'components/common/paragraph';
 import IconDivider from 'components/common/icon-divider';
 
-export default function About() {
+export default function Wedding() {
     const theme = useTheme();
     return (
-        <Section heading="Młoda para" subheading="Sami o sobie" color="secondary">
+        <Section heading="Ślub" subheading="" color="secondary">
             <Grid container spacing={3}>
-                <Grid item xs={12} sm={5}>
+                <Grid item xs={12} md={5}>
                     <div className="about__column">
-                        <img className="about__image" width="150" src="/images/bali-beach.jpg" />
-                        <div className="about__heading">
-                            <Heading importance={6} subheading color={theme.palette.primary.main}>Zuzia</Heading>
-                            <Heading importance={5} color={theme.palette.black.main}>O Pawle</Heading>
-                        </div>
                         <Card>
                             <CardContent>
                                 <Paragraph>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+                                    <span className="invitation">
+                                    Z wielką radością zapraszamy
+                                    <br />
+                                    na nasz <strong>ślub</strong>,
+                                    <br />
+                                    który odbędzie się <strong>4 czerwca 2021</strong>
+                                    <br />
+                                    o godzinie <strong>15:00</strong>
+                                    <br />
+                                    w <strong>Starej Miłośnie</strong> w drewnianym kościele
+                                    <br />
+                                    parafii Naświętszego Serca Pana Jezusa!
+                                    </span>
                                 </Paragraph>
                             </CardContent>
                         </Card>
@@ -66,6 +73,10 @@ export default function About() {
             .about__image {
                 border-radius: 50%;
                 margin: 0 auto;
+            }
+
+            .invitation {
+                font-size: 1.2rem;
             }
             `}</style>
         </Section>
