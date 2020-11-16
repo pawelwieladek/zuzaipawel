@@ -9,7 +9,7 @@ export default function Index() {
         <title>Zuzanna i Paweł biorą ślub!</title>
         <link rel="icon" href="/favicon.ico" />
         <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet"/>
-        <script src="https://kit.fontawesome.com/c9c81a6bf5.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/c9c81a6bf5.js" crossOrigin="anonymous"></script>
       </Head>
       <div>
         <Grid container>
@@ -45,7 +45,7 @@ export default function Index() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12} md={6} className="column" style={{ backgroundColor: '#ceb79d' }}>
+          <Grid item xs={12} md={6} className="column" style={{ backgroundColor: '#ceb79d', padding: 0 }}>
             <div className="map">
               <iframe src="https://snazzymaps.com/embed/253473" width="100%" height="100%" style={{ border: 'none' }} />
             </div>
@@ -141,10 +141,8 @@ export default function Index() {
 
         .map {
           position: relative;
-          width: 400px;
-          height: 400px;
-          max-width: 100%;
-          // border-radius: 50%;
+          width: 100%;
+          height: 100%;
           overflow: hidden;
         }
       `}</style>
