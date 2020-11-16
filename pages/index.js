@@ -8,7 +8,8 @@ export default function Index() {
       <Head>
         <title>Zuzanna i Paweł biorą ślub!</title>
         <link rel="icon" href="/favicon.ico" />
-        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet" />
         <script src="https://kit.fontawesome.com/c9c81a6bf5.js" crossOrigin="anonymous"></script>
       </Head>
       <div>
@@ -31,17 +32,17 @@ export default function Index() {
               <Grid item sm={4} xs={12}>
                 <img src="images/calendar-alt-regular.svg" height="48" />
                 <hr />
-                <h4 style={{ marginTop: 0, fontSize: '24px' }}>04.06.2021</h4>
+                <h4 style={{ marginTop: 0, fontSize: '24px' }} className="text--mono">04.06.2021</h4>
               </Grid>
               <Grid item sm={4} xs={12}>
               <img src="images/clock-regular.svg" height="48" />
                 <hr />
-                <h4 style={{ marginTop: 0, fontSize: '24px' }}>15:00</h4>
+                <h4 style={{ marginTop: 0, fontSize: '24px' }} className="text--mono">15:00</h4>
               </Grid>
               <Grid item sm={4} xs={12}>
               <img src="images/map-marked-alt-solid.svg" height="48" />
                 <hr />
-                <h4 style={{ marginTop: 0 }}>ul. Borkowska 1, 05-077 Warszawa</h4>
+                <h4 style={{ marginTop: 0, fontSize: '14px' }} className="text--mono">ul. Borkowska 1,<br />05-077 Warszawa</h4>
               </Grid>
             </Grid>
           </Grid>
@@ -59,7 +60,7 @@ export default function Index() {
 
       <style jsx global>{`
         @font-face{
-          font-family: 'JetBrains Mono';
+          font-family: 'JetBrains Mono', monospace;
           src: url('/fonts/JetBrainsMono/web/eot/JetBrainsMono-Regular.eot') format('embedded-opentype'),
                 url('/fonts/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2') format('woff2'),
                 url('/fonts/JetBrainsMono/web/woff/JetBrainsMono-Regular.woff') format('woff'),
@@ -72,7 +73,7 @@ export default function Index() {
         body {
           padding: 0;
           margin: 0;
-          font-family: 'Roboto';
+          font-family: 'Roboto', sans-serif;
           font-weight: 400;
           font-size: 15px;
         }
@@ -82,13 +83,13 @@ export default function Index() {
         }
 
         h2 {
-          font-family: 'PT Serif';
+          font-family: 'PT Serif', serif;
           font-weight: 700;
           font-size: 48px;
         }
 
         h4 {
-          font-family: 'PT Serif';
+          font-family: 'PT Serif', serif;
           font-weight: 400;
           font-size: 18px;
         }
