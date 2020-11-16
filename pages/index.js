@@ -60,7 +60,7 @@ export default function Index() {
 
       <style jsx global>{`
         @font-face{
-          font-family: 'JetBrains Mono', monospace;
+          font-family: 'JetBrains Mono';
           src: url('/fonts/JetBrainsMono/web/eot/JetBrainsMono-Regular.eot') format('embedded-opentype'),
                 url('/fonts/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2') format('woff2'),
                 url('/fonts/JetBrainsMono/web/woff/JetBrainsMono-Regular.woff') format('woff'),
@@ -125,7 +125,7 @@ export default function Index() {
         }
 
         .text--mono {
-          font-family: 'JetBrains Mono';
+          font-family: 'JetBrains Mono', monospace;
         }
 
         .text--dark hr {
