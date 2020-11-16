@@ -144,7 +144,7 @@ export default function Index() {
           width: 400px;
           height: 400px;
           max-width: 100%;
-          border-radius: 50%;
+          // border-radius: 50%;
           overflow: hidden;
         }
       `}</style>
