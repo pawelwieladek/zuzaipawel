@@ -204,18 +204,21 @@ export default function Index() {
           font-family: 'PT Serif', serif;
           font-weight: 400;
           font-size: 48px;
+          text-align: center;
         }
 
         h3 {
           font-family: 'PT Serif', serif;
           font-weight: 400;
           font-size: 32px;
+          text-align: center;
         }
 
         h4 {
           font-family: 'PT Serif', serif;
           font-weight: 400;
           font-size: 18px;
+          text-align: center;
         }
 
         hr {
@@ -235,6 +238,12 @@ export default function Index() {
           align-items: center;
           justify-content: center;
           box-shadow: inset 0 0 40px rgba(0, 0, 0, .05);
+        }
+
+        @media screen and (max-width: 768px) {
+          .column {
+            padding: 20px;
+          }
         }
 
         .text--dark {
