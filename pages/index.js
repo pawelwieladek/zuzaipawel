@@ -1,6 +1,31 @@
 import Head from 'next/head'
 
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import MuiAccordion from '@material-ui/core/Accordion';
+import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
+import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+const Accordion = withStyles({
+  root: {
+    backgroundColor: '#e5ccaf',
+    boxShadow: 'none',
+    color: '#000000',
+    '&$expanded': {
+      margin: 0,
+      marginBottom: 0,
+    },
+    '&:last-child': {
+      borderBottom: 0,
+      borderRadius: 0,
+    },
+  },
+  expanded: {}
+})(MuiAccordion);
+
+const AccordionSummary = withStyles({})(MuiAccordionSummary);
+const AccordionDetails = withStyles((theme) => ({}))(MuiAccordionDetails);
 
 export default function Index() {
   return (
@@ -14,14 +39,14 @@ export default function Index() {
       </Head>
       <div>
         <Grid container>
-          <Grid item xs={12} md={6} className="column" style={{ backgroundColor: '#145051' }}>
-            <img src="images/rings.svg" className="image--block" height="50" />
-            <img src="images/logo.svg" className="image--block" height="100" style={{ marginTop: 40 }} />
-            <img src="images/date.svg" className="image--block" width="300" style={{ marginTop: 80 }} />
+          <Grid item xs={12} md={6} className="column background" style={{ backgroundColor: '#145051' }}>
+            <img src="images/rings.svg" className="image--block image--shadow" height="50" />
+            <img src="images/logo.svg" className="image--block image--shadow" height="100" style={{ marginTop: 40 }} />
+            <img src="images/date.svg" className="image--block image--shadow" width="300" style={{ marginTop: 80 }} />
           </Grid>
           <Grid item xs={12} md={6} className="column text--light" style={{ backgroundColor: '#16595a' }}>
             <img src="images/husband-wife-2.jpg" className="image--block image--rounded" width="240" />
-            <h2>Mąż i Żona</h2>
+            <h2>Młoda Para</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at purus risus. Integer nec imperdiet sapien. Pellentesque sollicitudin, nisi non semper lobortis, orci nulla tempor nunc, ut varius justo arcu et ex. Quisque sed mauris massa. Cras mollis porttitor lectus scelerisque rhoncus. Donec mi odio, pulvinar at finibus at, mollis id tellus. Pellentesque dictum odio nulla, id luctus lorem convallis et. Vestibulum tincidunt sagittis sem, a laoreet velit gravida ut. Pellentesque vulputate a felis id semper.</p>
           </Grid>
           <Grid item xs={12} md={6} className="column text--dark" style={{ backgroundColor: '#e5ccaf' }}>
@@ -30,17 +55,17 @@ export default function Index() {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at purus risus. Integer nec imperdiet sapien. Pellentesque sollicitudin, nisi non semper lobortis, orci nulla tempor nunc, ut varius justo arcu et ex. Quisque sed mauris massa. Cras mollis porttitor lectus scelerisque rhoncus. Donec mi odio, pulvinar at finibus at, mollis id tellus.</p>
             <Grid container spacing={2} className="text--center" style={{ marginTop: 40 }}>
               <Grid item sm={4} xs={12}>
-                <img src="images/calendar-alt-regular.svg" height="48" />
+                <img src="images/calendar.svg" height="48" />
                 <hr />
                 <h4 style={{ marginTop: 0, fontSize: '24px' }} className="text--mono">04.06.2021</h4>
               </Grid>
               <Grid item sm={4} xs={12}>
-              <img src="images/clock-regular.svg" height="48" />
+                <img src="images/clock-1.svg" height="48" />
                 <hr />
                 <h4 style={{ marginTop: 0, fontSize: '24px' }} className="text--mono">15:00</h4>
               </Grid>
               <Grid item sm={4} xs={12}>
-              <img src="images/map-marked-alt-solid.svg" height="48" />
+                <img src="images/map.svg" height="48" />
                 <hr />
                 <h4 style={{ marginTop: 0, fontSize: '14px' }} className="text--mono">ul. Borkowska 1,<br />05-077 Warszawa</h4>
               </Grid>
@@ -50,6 +75,99 @@ export default function Index() {
             <div className="map">
               <iframe src="https://snazzymaps.com/embed/253473" width="100%" height="100%" style={{ border: 'none' }} />
             </div>
+          </Grid>
+          <Grid item xs={12} md={6} className="column text--light" style={{ backgroundColor: '#145051' }}>
+            <h2>Świadkowie</h2>
+            <Grid container spacing={6}>
+              <Grid item xs={12} md={6}>
+                <img src="images/dominika.jpg" className="image--block image--rounded" width="160" />
+                <h4 className="text--center">Dominika Mońka</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at purus risus. Integer nec imperdiet sapien. Pellentesque sollicitudin, nisi non semper lobortis, orci nulla tempor nunc, ut varius justo arcu et ex. Quisque sed mauris massa. Cras mollis porttitor lectus scelerisque rhoncus. Donec mi odio, pulvinar at finibus at, mollis id tellus.</p>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <img src="images/marcin.jpg" className="image--block image--rounded" width="160" />
+                <h4 className="text--center">Marcin Wielądek</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at purus risus. Integer nec imperdiet sapien. Pellentesque sollicitudin, nisi non semper lobortis, orci nulla tempor nunc, ut varius justo arcu et ex. Quisque sed mauris massa. Cras mollis porttitor lectus scelerisque rhoncus. Donec mi odio, pulvinar at finibus at, mollis id tellus.</p>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={12} md={6} className="column" style={{ backgroundColor: '#ceb79d' }}>
+            <h3>Często zadawane pytania</h3>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <h4 className="text--no-margin">Transport na salę weselną</h4>
+              </AccordionSummary>
+              <AccordionDetails>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                  sit amet blandit leo lobortis eget.
+                </p>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel2a-content"
+                id="panel2a-header"
+              >
+                <h4 className="text--no-margin">Transport powrotny</h4>
+              </AccordionSummary>
+              <AccordionDetails>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                  sit amet blandit leo lobortis eget.
+                </p>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel3a-content"
+                id="panel3a-header"
+              >
+                <h4 className="text--no-margin">Animacje dla dzieci</h4>
+              </AccordionSummary>
+              <AccordionDetails>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                  sit amet blandit leo lobortis eget.
+                </p>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel4a-content"
+                id="panel4a-header"
+              >
+                <h4 className="text--no-margin">Prezenty</h4>
+              </AccordionSummary>
+              <AccordionDetails>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                  sit amet blandit leo lobortis eget.
+                </p>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel5a-content"
+                id="panel5a-header"
+              >
+                <h4 className="text--no-margin">Kontakt</h4>
+              </AccordionSummary>
+              <AccordionDetails>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                  sit amet blandit leo lobortis eget.
+                </p>
+              </AccordionDetails>
+            </Accordion>
           </Grid>
           <Grid item xs={12} md={6} className="column" style={{ backgroundColor: '#e5e5e5' }}></Grid>
           <Grid item xs={12} md={6} className="column" style={{ backgroundColor: '#ffffff' }}>
@@ -84,8 +202,14 @@ export default function Index() {
 
         h2 {
           font-family: 'PT Serif', serif;
-          font-weight: 700;
+          font-weight: 400;
           font-size: 48px;
+        }
+
+        h3 {
+          font-family: 'PT Serif', serif;
+          font-weight: 400;
+          font-size: 32px;
         }
 
         h4 {
@@ -110,6 +234,7 @@ export default function Index() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          box-shadow: inset 0 0 40px rgba(0, 0, 0, .05);
         }
 
         .text--dark {
@@ -124,6 +249,10 @@ export default function Index() {
           text-align: center;
         }
 
+        .text--no-margin {
+          margin: 0;
+        }
+
         .text--mono {
           font-family: 'JetBrains Mono', monospace;
         }
@@ -134,10 +263,16 @@ export default function Index() {
 
         .image--block {
           display: block;
+          margin: 0 auto;
         }
 
         .image--rounded {
           border-radius: 50%;
+        }
+
+        .image--shadow {
+          -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, .8));
+          filter: drop-shadow(0 0 5px rgba(0, 0, 0, .8));
         }
 
         .map {
@@ -145,6 +280,11 @@ export default function Index() {
           width: 100%;
           height: 100%;
           overflow: hidden;
+        }
+
+        .background {
+          background-image: url(images/background.jpg);
+          background-size: contain;
         }
       `}</style>
     </main>
