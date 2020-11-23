@@ -7,6 +7,8 @@ import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import Rsvp from '../components/rsvp';
+
 const Accordion = withStyles({
   root: {
     backgroundColor: '#e5ccaf',
@@ -36,6 +38,8 @@ export default function Index() {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet" />
         <script src="https://kit.fontawesome.com/c9c81a6bf5.js" crossOrigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
       </Head>
       <div>
         <Grid container>
@@ -169,7 +173,9 @@ export default function Index() {
               </AccordionDetails>
             </Accordion>
           </Grid>
-          <Grid item xs={12} md={6} className="column" style={{ backgroundColor: '#e5e5e5' }}></Grid>
+          <Grid item xs={12} md={6} className="column" style={{ backgroundColor: '#e5e5e5' }}>
+            <Rsvp />
+          </Grid>
           <Grid item xs={12} md={6} className="column" style={{ backgroundColor: '#ffffff' }}>
             <p className="text--mono">Made with <img src="images/heart.svg" height="16" /> by Zuzia i Paweł</p>
           </Grid>
