@@ -11,16 +11,11 @@ import Rsvp from '../components/rsvp';
 
 const Accordion = withStyles({
   root: {
-    backgroundColor: '#e5ccaf',
+    backgroundColor: '#145051',
     boxShadow: 'none',
-    color: '#000000',
-    '&$expanded': {
-      margin: 0,
-      marginBottom: 0,
-    },
-    '&:last-child': {
-      borderBottom: 0,
-      borderRadius: 0,
+    color: '#ffffff',
+    '&$expanded + &$expanded': {
+      marginTop: 0,
     },
   },
   expanded: {}
@@ -82,24 +77,24 @@ export default function Index() {
           </Grid>
           <Grid item xs={12} md={6} className="column text--light" style={{ backgroundColor: '#145051' }}>
             <h2>Świadkowie</h2>
-            <Grid container spacing={6}>
+            <Grid container spacing={10}>
               <Grid item xs={12} md={6}>
                 <img src="images/dominika.jpg" className="image--block image--rounded" width="160" />
-                <h4 className="text--center">Dominika Mońka</h4>
+                <h3 className="text--center">Dominika Mońka</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at purus risus. Integer nec imperdiet sapien. Pellentesque sollicitudin, nisi non semper lobortis, orci nulla tempor nunc, ut varius justo arcu et ex. Quisque sed mauris massa. Cras mollis porttitor lectus scelerisque rhoncus. Donec mi odio, pulvinar at finibus at, mollis id tellus.</p>
               </Grid>
               <Grid item xs={12} md={6}>
                 <img src="images/marcin.jpg" className="image--block image--rounded" width="160" />
-                <h4 className="text--center">Marcin Wielądek</h4>
+                <h3 className="text--center">Marcin Wielądek</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at purus risus. Integer nec imperdiet sapien. Pellentesque sollicitudin, nisi non semper lobortis, orci nulla tempor nunc, ut varius justo arcu et ex. Quisque sed mauris massa. Cras mollis porttitor lectus scelerisque rhoncus. Donec mi odio, pulvinar at finibus at, mollis id tellus.</p>
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12} md={6} className="column" style={{ backgroundColor: '#ceb79d' }}>
+          <Grid item xs={12} md={6} className="column text--light" style={{ backgroundColor: '#16595a' }}>
             <h3>Często zadawane pytania</h3>
             <Accordion>
               <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
+                expandIcon={<ExpandMoreIcon color="secondary" />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
@@ -114,7 +109,7 @@ export default function Index() {
             </Accordion>
             <Accordion>
               <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
+                expandIcon={<ExpandMoreIcon color="secondary" />}
                 aria-controls="panel2a-content"
                 id="panel2a-header"
               >
@@ -129,7 +124,7 @@ export default function Index() {
             </Accordion>
             <Accordion>
               <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
+                expandIcon={<ExpandMoreIcon color="secondary" />}
                 aria-controls="panel3a-content"
                 id="panel3a-header"
               >
@@ -144,7 +139,7 @@ export default function Index() {
             </Accordion>
             <Accordion>
               <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
+                expandIcon={<ExpandMoreIcon color="secondary" />}
                 aria-controls="panel4a-content"
                 id="panel4a-header"
               >
@@ -159,7 +154,7 @@ export default function Index() {
             </Accordion>
             <Accordion>
               <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
+                expandIcon={<ExpandMoreIcon color="secondary" />}
                 aria-controls="panel5a-content"
                 id="panel5a-header"
               >

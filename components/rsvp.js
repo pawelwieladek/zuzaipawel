@@ -109,13 +109,22 @@ export default function Rsvp() {
 
     return (
         <div>
-            <h4>Czy będziesz na naszym ślubie?</h4>
-            <Button variant="contained" color="primary" onClick={acceptInvitation}>
-                Tak
-            </Button>
-            <Button variant="contained" color="secondary" onClick={rejectInvitation}>
-                Nie
-            </Button>
+            <h3>Czy będziesz na naszym ślubie?</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                  sit amet blandit leo lobortis eget.</p>
+            <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                    <Button fullWidth variant="contained" color="secondary" onClick={rejectInvitation}>
+                        Nie będzie mnie.
+                    </Button>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <Button fullWidth variant="contained" color="primary" onClick={acceptInvitation}>
+                        Tak, będę!
+                    </Button>
+                </Grid>
+            </Grid>
+
         </div>
     );
 }
