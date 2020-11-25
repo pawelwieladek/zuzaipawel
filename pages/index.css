@@ -92,10 +92,6 @@
     font-family: 'JetBrains Mono', monospace;
   }
 
-  .text--dark hr {
-    border-color: #ceb79d;
-  }
-
   .image--block {
     display: block;
     margin: 0 auto;
