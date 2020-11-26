@@ -90,7 +90,7 @@ const RsvpSection = () => (
     <h3>Czy będziesz na naszym ślubie?</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
         sit amet blandit leo lobortis eget.</p>
-    <Container maxWidth="xs">
+    <Container maxWidth="sm">
       <Rsvp />
     </Container>
   </Section>
