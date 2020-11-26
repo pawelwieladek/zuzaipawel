@@ -1,8 +1,9 @@
-import Head from 'next/head'
-
 import { useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
 
+import Page from '../components/page';
 import Rsvp from '../components/rsvp';
 import Faq from '../components/faq';
 import Section from '../components/section';
@@ -89,40 +90,33 @@ const RsvpSection = () => (
     <h3>Czy będziesz na naszym ślubie?</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
         sit amet blandit leo lobortis eget.</p>
-    <Rsvp />
+    <Container maxWidth="xs">
+      <Rsvp />
+    </Container>
   </Section>
 )
 
 const Footer = () => (
   <Section color="neutral">
     <p className="text--mono">Made with <img src="images/heart.svg" height="16" /> by Zuzia i Paweł</p>
+    <Link href="https://www.privacypolicygenerator.info/live.php?token=1gub9oMMQpYXW9AEFMh8iO1IyrRKaxhi" color="secondary">Polityka prywatności</Link>
+    <Link href="https://www.gdprprivacypolicy.net/live.php?token=A6fp897lCt4k7DcWHU4fXSWdN3SeyRo7" color="secondary">Informacje o RODO</Link>
   </Section>
 )
 
 export default function Index() {
   return (
-    <main>
-      <Head>
-        <title>Zuzanna i Paweł biorą ślub!</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet" />
-        <script src="https://kit.fontawesome.com/c9c81a6bf5.js" crossOrigin="anonymous"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
-      </Head>
-      <div>
-        <Grid container>
-          <Intro />
-          <Newlyweds />
-          <Wedding />
-          <Map />
-          <Witnesses />
-          <FaqSection />
-          <RsvpSection />
-          <Footer />
-        </Grid>
-      </div>
-    </main>
+    <Page>
+      <Grid container>
+        <Intro />
+        <Newlyweds />
+        <Wedding />
+        <Map />
+        <Witnesses />
+        <FaqSection />
+        <RsvpSection />
+        <Footer />
+      </Grid>
+    </Page>
   )
 }
