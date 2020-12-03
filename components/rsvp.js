@@ -1,124 +1,138 @@
-import { useEffect } from 'react';
-import deburr from 'lodash.deburr';
+import { useEffect, useState } from 'react';
 
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Alert from '@material-ui/lab/Alert';
 
-async function checkFirebaseInitialized() {
-    if ((window.firebase.apps.length > 0)) {
-        return Promise.resolve();
-    }
-    await window.firebase.initializeApp({
-        apiKey: "AIzaSyDJT7y2oilDCau9P-eBj8JoqLgeLwvL-nc",
-        authDomain: "zuza-i-pawel.firebaseapp.com",
-        databaseURL: "https://zuza-i-pawel.firebaseio.com",
-        projectId: "zuza-i-pawel",
-        storageBucket: "zuza-i-pawel.appspot.com",
-        messagingSenderId: "435795640258",
-        appId: "1:435795640258:web:35c8b99a7f49a40272205b"
-    });
+import * as Firebase from './firebase';
+import * as Facebook from './facebook';
+
+const createUser = ({
+    id = null,
+    name = null,
+    presence = null,
+} = {}) => ({
+    id,
+    name,
+    presence,
+});
+
+function setErrorMessage(setError) {
+    setError('Wystapił błąd. Skontaktuj się z nami.');
 }
 
-async function writeUserData(userId, name, presence) {
-    await checkFirebaseInitialized();
-
-    const timestamp = Date.now();
-    const id = deburr(name).replace(' ', '-').toLowerCase();
-    await window.firebase.database().ref('users/' + id).set({
-        name,
-        id: userId,
-        presence,
-        timestamp
-    });
-}
-
-
-async function getUserData(id) {
-    checkFirebaseInitialized();
-
-    return await window.firebase.database()
-        .ref('users/' + id)
-        .once('value')
-        .then(snapshot => snapshot.val());
-}
-
-function attachFacebookScript() {
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) { return; }
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-}
-
-async function checkFacebookInitialized() {
-    if (window.FB) {
-        return Promise.resolve();
-    }
-    return await new Promise((resolve) => {
-        window.fbAsyncInit = function () {
-            window.FB.init({
-                appId: '376082736786225',
-                cookie: true,
-                xfbml: true,
-                version: 'v9.0'
-            });
-            resolve();
+async function initialize({ setUser, setLoading, setError }) {
+    try {
+        await Firebase.initialize();
+        await Facebook.initialize();
+    
+        const state = await getInitialState();
+        if (state) {
+            setUser(state);
         }
-    });
+    } catch (error) {
+        setErrorMessage(setError);
+    }
+    setLoading(false);
 }
 
-async function loginWithFacebook() {
-    await checkFacebookInitialized();
-    return new Promise((resolve) => {
-        FB.login(response => {
-            if (response.authResponse) {
-                resolve();
+async function getInitialState() {
+    const status = await Facebook.getLoginStatus();
+    if (status === 'connected') {
+        const { id, name } = await Facebook.getApiMe();
+        const { presence } = await Firebase.getUserData(id);
+        return createUser({ id, name, presence });
+    }
+}
+
+function createUserPreferenceSetter({ setUser, setLoading, setError }) {
+    return function createSetUserPreferenceHandler({ presence }) {
+        return async () => {
+            setLoading(true);
+            try {
+                await Facebook.checkConnected();
+                const { id, name } = await Facebook.getApiMe();
+                const user = createUser({ id, name, presence });
+                await Firebase.setUserData(id, user);
+                setUser(user);
+            } catch (error) {
+                setErrorMessage(setError);
             }
-        });
-    })
+            setLoading(false);
+        }
+    }
 }
 
-async function getFacebookUserData() {
-    await loginWithFacebook();
-    // TODO: check if user has already connected
-    return new Promise((resolve) => {
-        FB.api('/me', function (reponse) {
-            const { id, name } = reponse;
-            resolve({id, name });
-        });
-    })
+const ACCEPT_INVITATION_MESSAGE = 'Tak, będę!';
+const REJECT_INVITATION_MESSAGE = 'Nie będzie mnie.';
+
+const getInvitationMessage = (presence) => {
+    if (presence === true) return ACCEPT_INVITATION_MESSAGE;
+    if (presence === false) return REJECT_INVITATION_MESSAGE;
+    return '';
 }
 
-async function acceptInvitation() {
-    const { id, name } = await getFacebookUserData();
-    await writeUserData(id, name, true);
-}
+const Form = ({ setUserPreference }) => (
+    <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+            <Button fullWidth variant="contained" color="secondary" onClick={setUserPreference({ presence: false })}>
+                {REJECT_INVITATION_MESSAGE}
+            </Button>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+            <Button fullWidth variant="contained" color="primary" onClick={setUserPreference({ presence: true })}>
+                {ACCEPT_INVITATION_MESSAGE}
+            </Button>
+        </Grid>
+    </Grid>
+);
 
-async function rejectInvitation() {
-    const { id, name } = await getFacebookUserData();
-    await writeUserData(id, name, false);
-}
-
-export default function Rsvp() {
-    useEffect(() => {
-        attachFacebookScript();
-        checkFacebookInitialized();
-    })
-
+const Response = ({ user, setUserPreference }) => {
     return (
-        <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-                <Button fullWidth variant="contained" color="secondary" onClick={rejectInvitation}>
-                    Nie będzie mnie.
-                </Button>
+        <Grid container spacing={1}>
+            {user.presence === true && (
+                <Grid item xs={12}><h4>Cieszymy się, że będziesz z nami!</h4></Grid>
+            )}
+            {user.presence === false && (
+                <Grid item xs={12}><h4>Szkoda, że Cię nie będzie!</h4></Grid>
+            )}
+            <Grid item xs={12}>
+                <Typography align="center">Dostaliśmy Twoją odpowiedź: <strong>{getInvitationMessage(user.presence)}</strong></Typography>
             </Grid>
-            <Grid item xs={12} sm={6}>
-                <Button fullWidth variant="contained" color="primary" onClick={acceptInvitation}>
-                    Tak, będę!
-                </Button>
+            <Grid item xs={12}>
+                <Box textAlign="center">
+                    <Button color="primary" onClick={setUserPreference({ presence: null })}>Zmień swój wybór.</Button>
+                </Box>
             </Grid>
         </Grid>
     );
 }
+
+export default function Rsvp() {
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState(createUser());
+    const setUserPreference = createUserPreferenceSetter({ setUser, setLoading, setError });
+
+    useEffect(() => {
+        initialize({ setUser, setLoading, setError });
+    }, [])
+    
+    if (error !== null) {
+        return <Alert severity="error">{error}</Alert>
+    }
+    if (loading === true) {
+        return (
+            <Box textAlign="center">
+                <CircularProgress />
+            </Box>
+        )
+    }
+    if (user.presence === true || user.presence === false) {
+        return <Response user={user} setUserPreference={setUserPreference} />
+    }
+    return <Form setUserPreference={setUserPreference} />
+};
