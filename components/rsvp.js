@@ -34,6 +34,7 @@ async function initialize({ setUser, setLoading, setError }) {
             setUser(state);
         }
     } catch (error) {
+        console.error(error);
         setErrorMessage(setError);
     }
     setLoading(false);
@@ -59,6 +60,7 @@ function createUserPreferenceSetter({ setUser, setLoading, setError }) {
                 await Firebase.setUserData(id, user);
                 setUser(user);
             } catch (error) {
+                console.error(error);
                 setErrorMessage(setError);
             }
             setLoading(false);

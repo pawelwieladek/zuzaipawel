@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 function attachScript() {
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -27,18 +25,25 @@ export async function initialize() {
 }
 
 export async function login() {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         FB.login(response => {
-            resolve(response.authResponse);
+            const { authResponse } = response;
+            if (!authResponse) {
+                return reject();
+            }
+            return resolve(authResponse);
         });
     })
 }
 
 export async function getApiMe() {
     return new Promise((resolve, reject) => {
-        FB.api('/me', response => {
-            const { id, name } = response;
-            resolve({ id, name });
+        FB.api('/me', (response) => {
+            const { id, name, error } = response;
+            if (error) {
+                return reject(error);
+            }
+            return resolve({ id, name });
         });
     })
 }
@@ -46,14 +51,19 @@ export async function getApiMe() {
 export async function getLoginStatus() {
     return new Promise((resolve) => {
         FB.getLoginStatus(response => {
-            resolve(response.status);
+            const { status } = response;
+            return resolve(status);
         });
     })
 }
 
 export async function checkConnected() {
-    const status = await getLoginStatus();
-    if (status !== 'connected') {
-        await loginWithFacebook();
+    try {
+        const status = await getLoginStatus();
+        if (status !== 'connected') {
+            return await login();
+        }
+    } catch (error) {
+        return null;
     }
 }
