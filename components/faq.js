@@ -1,6 +1,6 @@
 import deburr from 'lodash.deburr';
 
-import { withStyles, useTheme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
@@ -8,9 +8,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const Accordion = withStyles({
   root: {
-    backgroundColor: '#145051',
+    backgroundColor: '#e5ccaf',
     boxShadow: 'none',
-    color: '#ffffff',
+    color: '#000000',
     '&$expanded + &$expanded': {
       marginTop: 0,
     },
@@ -19,7 +19,7 @@ const Accordion = withStyles({
 })(MuiAccordion);
 
 const AccordionSummary = withStyles({})(MuiAccordionSummary);
-const AccordionDetails = withStyles((theme) => ({}))(MuiAccordionDetails);
+const AccordionDetails = withStyles({})(MuiAccordionDetails);
 
 const Question = ({ expanded, onChange, title, children }) => {
   const id = deburr(title);
@@ -29,7 +29,7 @@ const Question = ({ expanded, onChange, title, children }) => {
   return (
     <Accordion expanded={expanded === id} onChange={handleChange(id)}>
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon color="secondary" />}
+        expandIcon={<ExpandMoreIcon color="primary" />}
         aria-controls={id}
         id={id}
       >
