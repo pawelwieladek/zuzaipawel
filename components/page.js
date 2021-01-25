@@ -11,6 +11,19 @@ export default function Page({ children }) {
         <script src="https://kit.fontawesome.com/c9c81a6bf5.js" crossOrigin="anonymous"></script>
         <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+        <meta charset="utf-8"/>
+        <meta name="description" content="Strona weselna, tylko dla gości"/>
+        <meta name="image" content="https://zuzaipawel.pl/images/og-seo.jpg"/>
+        <meta itemprop="name" content="Zuzia i Paweł biorą ślub!"/>
+        <meta itemprop="description" content="Strona weselna, tylko dla gości"/>
+        <meta itemprop="image" content="https://zuzaipawel.pl/images/og-seo.jpg"/>
+        <meta name="og:title" content="Zuzia i Paweł biorą ślub!"/>
+        <meta name="og:description" content="Strona weselna, tylko dla gości"/>
+        <meta name="og:image" content="https://zuzaipawel.pl/images/og-seo.jpg"/>
+        <meta name="og:url" content="https://zuzaipawel.pl/"/>
+        <meta name="og:site_name" content="Zuzia i Paweł biorą ślub!"/>
+        <meta name="og:locale" content="pl_PL"/>
+        <meta name="og:type" content="website"/>
       </Head>
       {children}
     </main>
