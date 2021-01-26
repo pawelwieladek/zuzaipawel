@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import TagManager from 'react-gtm-module';
+
 import './index.css';
 
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -22,6 +25,9 @@ const theme = createMuiTheme({
 });
 
 export default function ({ Component, pageProps }) {
+    useEffect(() => {
+        TagManager.initialize({ gtmId: 'G-16SLLVJ0B7' });
+    }, []);
     return (
         <ThemeProvider theme={theme}>
             <Component {...pageProps} />

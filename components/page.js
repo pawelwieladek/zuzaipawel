@@ -5,7 +5,10 @@ export default function Page({ children }) {
     <main>
       <Head>
         <title>Zuzanna i Paweł biorą ślub!</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+        <link rel="manifest" href="/site.webmanifest"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Hind+Siliguri:wght@300;400;700&display=swap" rel="stylesheet" />
         <script src="https://kit.fontawesome.com/c9c81a6bf5.js" crossOrigin="anonymous"></script>
