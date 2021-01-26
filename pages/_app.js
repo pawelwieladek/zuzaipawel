@@ -27,6 +27,9 @@ const theme = createMuiTheme({
 export default function ({ Component, pageProps }) {
     useEffect(() => {
         TagManager.initialize({ gtmId: 'G-16SLLVJ0B7' });
+        window.dataLayer.push({
+            event: 'pageview'
+        });
     }, []);
     return (
         <ThemeProvider theme={theme}>
