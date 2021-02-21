@@ -24,10 +24,12 @@
 
   h1, h2, h3 {
     font-family: 'EB Garamond', serif;
+    line-height: initial;
   }
 
   h4, h5, h6 {
     font-family: 'Hind Siliguri', serif;
+    line-height: initial;
   }
 
   h2 {

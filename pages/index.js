@@ -1,11 +1,9 @@
 import { useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 
 import Page from '../components/page';
-import Rsvp from '../components/rsvp';
 import Faq from '../components/faq';
 import Section from '../components/section';
 
@@ -127,12 +125,10 @@ const FaqSection = () => (
 )
 
 const RsvpSection = () => (
-  <Section color="neutral" dark>
+  <Section color="secondary">
     <h3>Czy będziesz na naszym ślubie?</h3>
-    <p>Klikając poniżej <em>Tak</em> lub <em>Nie</em> zostaniesz przekierowany na Facebooka, aby potwierdzić tożsamość. Zaloguj się do naszej Facebookowej aplikacji, dzięki czemu od razu poznamy Twoją odpowiedź.</p>
-    <Container maxWidth="sm">
-      <Rsvp />
-    </Container>
+    <p>Przekaż nam potwierdzenie obecności oraz kilka innych istotnych informacji za pomocą ankiety.</p>
+    <Button color="primary" variant="contained" href="https://forms.gle/8AfUzXc3vwqX2usT9" target="_blank">Potwierdź swoją obecność</Button>
   </Section>
 )
 
