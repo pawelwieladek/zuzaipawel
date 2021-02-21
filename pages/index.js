@@ -129,7 +129,7 @@ const FaqSection = () => (
 const RsvpSection = () => (
   <Section color="neutral" dark>
     <h3>Czy będziesz na naszym ślubie?</h3>
-    <p>Klikając poniej <em>Tak</em> lub <em>Nie</em> zostaniesz przekierowany na Facebooka, aby potwierdzić tożsamość. Zaloguj się do naszej Facebookowej aplikacji, dzięki czemu od razu poznamy Twoją odpowiedź.</p>
+    <p>Klikając poniżej <em>Tak</em> lub <em>Nie</em> zostaniesz przekierowany na Facebooka, aby potwierdzić tożsamość. Zaloguj się do naszej Facebookowej aplikacji, dzięki czemu od razu poznamy Twoją odpowiedź.</p>
     <Container maxWidth="sm">
       <Rsvp />
     </Container>
