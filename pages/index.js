@@ -76,7 +76,7 @@ const Party = () => {
     <Section color="primary">
       <img src="images/party.jpg" className="image--block image--rounded" width="240" />
       <h2>Wesele</h2>
-      <p>Po ceremonii zaślubin goście weseli udadzą się w kierunku sali. Zaplanujcie kilkadziesiąt minut na transport pomiędzy kościołem, a miejscem przyjęcia weselnego. Mamy nadzieję, że będziecie się tego dnia świetnie bawić!</p>
+      <p>Po ceremonii zaślubin goście weselni udadzą się w kierunku sali. Zaplanujcie kilkadziesiąt minut na transport pomiędzy kościołem, a miejscem przyjęcia weselnego. Mamy nadzieję, że będziecie się tego dnia świetnie bawić!</p>
       <Button variant="contained" color="secondary" href="https://www.google.pl/maps/place/Szklarnia+Grodzisk/@52.1181065,20.6550628,17z/data=!3m1!4b1!4m5!3m4!1s0x471949e44a8190bd:0xba9e946321db1b41!8m2!3d52.1181032!4d20.6572515">Otwórz w Mapach Google</Button>
       <Grid container spacing={2} className="text--center" style={{ marginTop: 40, maxWidth: 540 }}>
         <Grid item sm={6} xs={12}>
@@ -126,7 +126,7 @@ const FaqSection = () => (
 
 const RsvpSection = () => (
   <Section color="secondary">
-    <h3>Czy będziesz na naszym ślubie?</h3>
+    <h3>Czy będziesz na naszym weselu?</h3>
     <p>Przekaż nam potwierdzenie obecności oraz kilka innych istotnych informacji za pomocą ankiety.</p>
     <Button color="primary" variant="contained" href="https://forms.gle/8AfUzXc3vwqX2usT9" target="_blank">Potwierdź swoją obecność</Button>
   </Section>
