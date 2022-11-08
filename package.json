@@ -14,7 +14,7 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "clsx": "^1.1.1",
     "lodash.deburr": "^4.1.0",
-    "next": "9.3.5",
+    "next": "13.0.2",
     "next-on-netlify": "^2.3.2",
     "react": "16.13.1",
     "react-dom": "16.13.1"
